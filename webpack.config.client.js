@@ -5,6 +5,10 @@ require('dotenv').config();
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const scriptPattern = /\.(js|jsx|mjs)$/;
+const stylePattern = /\.(css|less|styl|scss|sass|sss)$/;
+const imagePattern = /\.(bmp|gif|jpg|jpeg|png|svg)$/;
+
 const port = (Number(process.env.PORT) || 4000) + 1;
 if (!isProduction) {
   console.log('Development Server Port: ' + port);
@@ -20,12 +24,19 @@ const developmentConfig = {
   target: 'web',
   mode: 'development',
   module: {
-    rules: [{
-    test: /\.js?$|\.jsx?$/,
-    use: 'babel-loader',
-    include: [
-      path.join(__dirname, 'app', 'client')
-    ]
+    strictExportPresence: true,
+      rules: [{
+      test: /\.js?$|\.jsx?$/,
+      use: 'babel-loader',
+      include: [
+        path.join(__dirname, 'app', 'client')
+      ]
+    }, {
+      test: /\.css$/,
+      use: ["style-loader", "css-loader"]
+    },{
+      test: /\.(scss|sass)$/,
+      use: 'sass-loader',
     }]
   },
   plugins: [
@@ -63,12 +74,19 @@ const productionConfig = {
   target: 'web',
   mode: 'production',
   module: {
-    rules: [{
-    test: /\.js?$|\.jsx?$/,
-    use: 'babel-loader',
-    include: [
-      path.join(__dirname, 'app', 'client')
-    ]
+    strictExportPresence: true,
+      rules: [{
+      test: /\.js?$|\.jsx?$/,
+      use: 'babel-loader',
+      include: [
+        path.join(__dirname, 'app', 'client')
+      ]
+    }, {
+      test: /\.css$/,
+      use: ["style-loader", "css-loader"]
+    },{
+      test: /\.(scss|sass)$/,
+      use: 'sass-loader',
     }]
   },
   plugins: [

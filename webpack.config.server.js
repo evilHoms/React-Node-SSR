@@ -27,6 +27,12 @@ const developmentConfig = {
       test: /\.js$|\.jsx$/,
       use: 'babel-loader',
       exclude: /node_modules/
+    }, {
+      test: /\.css$/,
+      use: ["style-loader", "css-loader"]
+    },{
+      test: /\.(scss|sass)$/,
+      use: 'sass-loader',
     }]
   },
   plugins: [
@@ -65,6 +71,12 @@ const productionConfig = {
       test: /\.js$|\.jsx$/,
       use: 'babel-loader',
       exclude: /node_modules/
+    }, {
+      test: /\.css$/,
+      use: ["style-loader", "css-loader"]
+    },{
+      test: /\.(scss|sass)$/,
+      use: 'sass-loader',
     }]
   },
   plugins: [
