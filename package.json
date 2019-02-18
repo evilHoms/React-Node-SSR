@@ -35,11 +35,11 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "start:server:dev": "rm -rf ./build && NODE_ENV=development webpack --mode=development --config webpack.config.server.js",
-    "start:client:dev": "NODE_ENV=development webpack-dev-server --mode=development --config webpack.config.client.js",
+    "start:server:dev": "rm -rf ./build && NODE_ENV=development webpack --mode=development --config webpack/webpack.config.server.js",
+    "start:client:dev": "NODE_ENV=development webpack-dev-server --mode=development --config webpack/webpack.config.client.js",
     "start": "rm -rf ./.build && npm-run-all --parallel start:server:dev start:client:dev",
-    "build:server:prod": "NODE_ENV=production webpack --mode=production --config webpack.config.server.js",
-    "build:client:prod": "NODE_ENV=production webpack --mode=production --config webpack.config.client.js",
+    "build:server:prod": "NODE_ENV=production webpack --mode=production --config webpack/webpack.config.server.js",
+    "build:client:prod": "NODE_ENV=production webpack --mode=production --config webpack/webpack.config.client.js",
     "build": "rm -rf ./production && npm-run-all --parallel build:server:prod build:client:prod"
   }
 }
