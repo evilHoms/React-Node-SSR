@@ -3,38 +3,22 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const StartServerPlugin = require('start-server-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-require('dotenv').config();
+
+const { serverConfig } = require('./webpack.config.common');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 const developmentConfig = {
+  ...serverConfig,
   entry: [
     'webpack/hot/poll?1000',
     './app/server/index.js'
   ],
   watch: true,
-  target: 'node',
-  node: {
-    __dirname: false,
-    __filename: false,
-  },
   mode: 'development',
   externals: [nodeExternals({
-      whitelist: ['webpack/hot/poll?1000']
+    whitelist: ['webpack/hot/poll?1000']
   })],
-  module: {
-    rules: [{
-      test: /\.js$|\.jsx$/,
-      use: 'babel-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.css$/,
-      use: ["style-loader", "css-loader"]
-    },{
-      test: /\.(scss|sass)$/,
-      use: 'sass-loader',
-    }]
-  },
   plugins: [
     new StartServerPlugin('server.js'),
     new webpack.NamedModulesPlugin(),
@@ -56,29 +40,12 @@ const developmentConfig = {
 };
 
 const productionConfig = {
+  ...serverConfig,
   entry: [
     './app/server/index.js'
   ],
-  target: 'node',
-  node: {
-    __dirname: false,
-    __filename: false,
-  },
   mode: 'production',
   externals: [nodeExternals()],
-  module: {
-    rules: [{
-      test: /\.js$|\.jsx$/,
-      use: 'babel-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.css$/,
-      use: ["style-loader", "css-loader"]
-    },{
-      test: /\.(scss|sass)$/,
-      use: 'sass-loader',
-    }]
-  },
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -91,7 +58,6 @@ const productionConfig = {
     }),
   ],
   optimization: {
-    splitChunks: { chunks: "all" },
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {

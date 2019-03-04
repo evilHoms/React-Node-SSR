@@ -1,6 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import React from 'react';
 import { matchPath, StaticRouter } from 'react-router-dom';
+import StyleContext from 'isomorphic-style-loader/StyleContext'
 
 import routes from './routes';
 import renderFullPage from './renderFullPage';
@@ -13,14 +14,18 @@ const router = (req, res) => {
     return;
   }
 
-  const context = {};
+  const context = {}
+  const css = new Set()
+  const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()))
   const html = renderToString(
-    <StaticRouter context={ context } location={ req.url }>
-      <App />
-    </StaticRouter>
+    <StyleContext.Provider value={{ insertCss }}>
+      <StaticRouter context={ context } location={ req.url }>
+        <App />
+      </StaticRouter>
+    </StyleContext.Provider>
   );
   
-  res.status(200).send(renderFullPage(html, { state: 'Test State' }));
+  res.status(200).send(renderFullPage(html, css, { state: 'Test State' }));
 };
 
 export default router;

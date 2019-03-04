@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-require('dotenv').config();
+
+const { clientConfig } = require('./webpack.config.common');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -15,30 +16,14 @@ if (!isProduction) {
 }
 
 const developmentConfig = {
+  ...clientConfig,
   entry: [
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://localhost:${port}`,
     'webpack/hot/only-dev-server',
     './app/client'
   ],
-  target: 'web',
   mode: 'development',
-  module: {
-    strictExportPresence: true,
-      rules: [{
-      test: /\.js?$|\.jsx?$/,
-      use: 'babel-loader',
-      include: [
-        path.join(__dirname, 'app', 'client')
-      ]
-    }, {
-      test: /\.css$/,
-      use: ["style-loader", "css-loader"]
-    },{
-      test: /\.(scss|sass)$/,
-      use: 'sass-loader',
-    }]
-  },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -70,25 +55,9 @@ const developmentConfig = {
 };
 
 const productionConfig = {
+  ...clientConfig,
   entry: './app/client',
-  target: 'web',
   mode: 'production',
-  module: {
-    strictExportPresence: true,
-      rules: [{
-      test: /\.js?$|\.jsx?$/,
-      use: 'babel-loader',
-      include: [
-        path.join(__dirname, 'app', 'client')
-      ]
-    }, {
-      test: /\.css$/,
-      use: ["style-loader", "css-loader"]
-    },{
-      test: /\.(scss|sass)$/,
-      use: 'sass-loader',
-    }]
-  },
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

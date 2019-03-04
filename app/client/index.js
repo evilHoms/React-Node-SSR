@@ -1,24 +1,34 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
 import { BrowserRouter as Router } from 'react-router-dom';
+import StyleContext from 'isomorphic-style-loader/StyleContext'
 
 import App from './components/App';
 
-render((
+const insertCss = (...styles) => {
+  const removeCss = styles.map(style => style._insertCss())
+  return () => removeCss.forEach(dispose => dispose())
+}
+
+hydrate((
   <AppContainer>
-    <Router>
-      <App preloadedState={ window.__PRELOADED_STATE__ } />
-    </Router>
+    <StyleContext.Provider value={{ insertCss }}>
+      <Router>
+        <App preloadedState={ window.__PRELOADED_STATE__ } />
+      </Router>
+    </StyleContext.Provider>
   </AppContainer>),
   document.getElementById('root')
 );
 
 if (module.hot) {
   module.hot.accept('./components/App', () => {
-    render(
+    hydrate(
       <AppContainer>
-        <App />
+        <StyleContext.Provider value={{ insertCss }}>
+          <App />
+        </StyleContext.Provider>
       </AppContainer>,
       document.getElementById('root')
     )
