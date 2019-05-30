@@ -1,5 +1,6 @@
 const isProduction = process.env.NODE_ENV === 'production';
 const clientRef = isProduction ? '/scripts/client.js' : `http://localhost:${(Number(process.env.PORT) || 4000) + 1}/client.js`;
+console.log(clientRef)
 
 const renderFullPage = (html, styles, preloadedState) => (`
   <!doctype html>

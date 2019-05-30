@@ -3,6 +3,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const StartServerPlugin = require('start-server-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const { serverConfig } = require('./webpack.config.common');
 
@@ -31,11 +32,15 @@ const developmentConfig = {
         "NODE_ENV": JSON.stringify('development'),
       }
     }),
+    new CopyWebpackPlugin([
+      { from: 'app/public/images', to: 'public/images' }
+    ])
   ],
   devtool: 'cheap-module-source-map',
   output: {
     path: path.join(__dirname, '.build'),
-    filename: 'server.js'
+    filename: 'server.js',
+    publicPath: '/public'
   }
 };
 
@@ -56,6 +61,9 @@ const productionConfig = {
         "NODE_ENV": JSON.stringify('production'),
       }
     }),
+    new CopyWebpackPlugin([
+      { from: 'app/public/images', to: 'public/images' },
+    ])
   ],
   optimization: {
     minimizer: [
@@ -80,7 +88,7 @@ const productionConfig = {
   output: {
     path: path.join(__dirname, 'production', 'server'),
     filename: 'index.js',
-    publicPath: '/'
+    publicPath: '/public'
   }
 }
 

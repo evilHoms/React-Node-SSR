@@ -6,10 +6,6 @@ const { clientConfig } = require('./webpack.config.common');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const scriptPattern = /\.(js|jsx|mjs)$/;
-const stylePattern = /\.(css|less|styl|scss|sass|sss)$/;
-const imagePattern = /\.(bmp|gif|jpg|jpeg|png|svg)$/;
-
 const port = (Number(process.env.PORT) || 4000) + 1;
 if (!isProduction) {
   console.log('Development Server Port: ' + port);
@@ -92,7 +88,7 @@ const productionConfig = {
   },
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'production', 'public', 'scripts'),
+    path: path.join(__dirname, 'production', 'server', 'public', 'scripts'),
     publicPath: '/',
     filename: 'client.js'
   }

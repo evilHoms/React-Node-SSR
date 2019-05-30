@@ -38,6 +38,38 @@ const clientConfig = {
         'sass-loader',
         'postcss-loader',
       ],
+    }, {
+      test: /\.(gif|png|jpe?g|svg)$/i,
+      use: [{
+        loader: 'url-loader',
+        options: { 
+          limit: 8000,
+          name: '[name].[ext]',
+          publicPath: 'images',
+          outputPath: 'public/images',
+        } 
+      }, {
+        loader: 'image-webpack-loader',
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65
+          },
+          optipng: {
+            enabled: false,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+          webp: {
+            quality: 75
+          }
+        }
+      }],
     }],
   },
 }
@@ -80,6 +112,48 @@ const serverConfig = {
         'sass-loader',
         'postcss-loader',
       ],
+    }, {
+      test: /\.(gif|png|jpe?g|svg)$/i,
+      use: [{
+        loader: 'url-loader',
+        options: { 
+          limit: 8000,
+          name: '[name].[ext]',
+          publicPath: 'images',
+          outputPath: 'public/images',
+        } 
+      }, {
+        loader: 'image-webpack-loader',
+        options: {
+          mozjpeg: {
+            progressive: true,
+            quality: 65
+          },
+          optipng: {
+            enabled: false,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4
+          },
+          gifsicle: {
+            interlaced: false,
+          },
+          webp: {
+            quality: 75
+          }
+        }
+      }],
+    }, {
+      test: /\.(ico)$/i,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          publicPath: 'public/images',
+          outputPath: 'public/images',
+        }
+      }]
     }],
   },
 }
