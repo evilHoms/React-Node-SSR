@@ -5,7 +5,7 @@ import StyleContext from 'isomorphic-style-loader/StyleContext'
 
 import routes from './routes';
 import renderFullPage from './renderFullPage';
-import App from '../client/components/App';
+import App from '../client/App';
 
 const router = (req, res) => {
   const match = routes.reduce((acc, route) => matchPath(req.url, { path: route, exact: true }) || acc, null);

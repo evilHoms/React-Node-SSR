@@ -88,7 +88,7 @@ const productionConfig = {
   },
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'production', 'server', 'public', 'scripts'),
+    path: path.join(__dirname, 'production', 'server', 'public'),
     publicPath: '/',
     filename: 'client.js'
   }

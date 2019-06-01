@@ -3,3 +3,5 @@
 yarn-error.log
 node_modules
 production
+server-error.log
+server-combined.log

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import icon from './test-img.png';
 
 import styles from './App.css';
+import Header from 'Components/Header';
 
 class App extends Component {
+
   state = {
     color: 'red',
   }
@@ -16,9 +17,9 @@ class App extends Component {
   render() {
     return (
       <div className={ styles.app }>
-        <button className={ styles.btn } onClick={ this.handleColorChange.bind(this) }>change color</button>
+        <Header />
+        <button className={ styles.btn } onClick={ this.handleColorChange }>change color</button>
         <div className={ styles.text } style={{ backgroundColor: this.state.color }}>HELLO WORLD</div>
-        <img src={ icon } />
         <img src="images/test-img.png" />
       </div>
     );

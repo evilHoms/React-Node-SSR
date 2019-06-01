@@ -1,6 +1,8 @@
 const path = require('path');
 require('dotenv').config();
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const clientConfig = {
   target: 'web',
   module: {
@@ -46,7 +48,7 @@ const clientConfig = {
           limit: 8000,
           name: '[name].[ext]',
           publicPath: 'images',
-          outputPath: 'public/images',
+          outputPath: isProduction ? 'images' : path.join('public', 'images'),
         } 
       }, {
         loader: 'image-webpack-loader',
@@ -72,6 +74,12 @@ const clientConfig = {
       }],
     }],
   },
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'app', 'client', 'App', 'components'),
+      Client: path.resolve(__dirname, 'app', 'client'),
+    }
+  }
 }
 
 const serverConfig = {
@@ -156,6 +164,13 @@ const serverConfig = {
       }]
     }],
   },
+  resolve: {
+    alias: {
+      Server: path.resolve(__dirname, 'app', 'server'),
+      Components: path.resolve(__dirname, 'app', 'client', 'App', 'components'),
+      Client: path.resolve(__dirname, 'app', 'client'),
+    }
+  }
 }
 
 module.exports = { clientConfig, serverConfig };

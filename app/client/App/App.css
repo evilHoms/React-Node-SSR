@@ -1,0 +1,17 @@
+/* Common application styles */
+
+$column: 300px;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  background-color: gray;
+
+  .btn {
+    padding: 5px 10px;
+    width: $column;
+  }
+}

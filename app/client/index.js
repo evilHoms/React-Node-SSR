@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader'
 import { BrowserRouter as Router } from 'react-router-dom';
 import StyleContext from 'isomorphic-style-loader/StyleContext'
 
-import App from './components/App';
+import App from './App';
 
 const insertCss = (...styles) => {
   const removeCss = styles.map(style => style._insertCss())
@@ -23,7 +23,7 @@ hydrate((
 );
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./App', () => {
     hydrate(
       <AppContainer>
         <StyleContext.Provider value={{ insertCss }}>
