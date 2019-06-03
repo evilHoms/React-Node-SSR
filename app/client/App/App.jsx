@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 
 import styles from './App.css';
+import Main from 'Components/Main';
 import Header from 'Components/Header';
+import Footer from 'Components/Footer';
+import SubHeader from 'Components/SubHeader';
 
 class App extends Component {
 
@@ -18,9 +21,11 @@ class App extends Component {
     return (
       <div className={ styles.app }>
         <Header />
-        <button className={ styles.btn } onClick={ this.handleColorChange }>change color</button>
+        <Main />
+        {/* <button className={ styles.btn } onClick={ this.handleColorChange }>change color</button>
         <div className={ styles.text } style={{ backgroundColor: this.state.color }}>HELLO WORLD</div>
-        <img src="images/test-img.png" />
+        <img src="images/test-img.png" /> */}
+        <Footer />
       </div>
     );
   }

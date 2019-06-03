@@ -1,0 +1,27 @@
+.sub-header-component {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: green;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 50px;
+    display: block;
+    width: 100px;
+    height: 50px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: green;
+  }
+}
+
+.sub-header-content {
+  position: absolute;
+  top: 0;
+}

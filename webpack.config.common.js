@@ -78,6 +78,8 @@ const clientConfig = {
     alias: {
       Components: path.resolve(__dirname, 'app', 'client', 'App', 'components'),
       Client: path.resolve(__dirname, 'app', 'client'),
+      Actions: path.resolve(__dirname, 'app', 'client', 'data', 'actions'),
+      Reducers: path.resolve(__dirname, 'app', 'client', 'data', 'reducers'),
     }
   }
 }
@@ -166,9 +168,8 @@ const serverConfig = {
   },
   resolve: {
     alias: {
+      ...clientConfig.resolve.alias,
       Server: path.resolve(__dirname, 'app', 'server'),
-      Components: path.resolve(__dirname, 'app', 'client', 'App', 'components'),
-      Client: path.resolve(__dirname, 'app', 'client'),
     }
   }
 }
