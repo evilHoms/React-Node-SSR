@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import routes from './routes';
 import renderFullPage from './renderFullPage';
 import App from 'Client/App';
-import reducers from 'Reducers';
+import reducers, { initialState } from 'Reducers';
 
 const router = (req, res) => {
   const match = routes.reduce((acc, route) => matchPath(req.url, { path: route, exact: true }) || acc, null);
@@ -17,7 +17,7 @@ const router = (req, res) => {
     return;
   }
 
-  const preloadedState = { articles: [ 'test' ] };
+  const preloadedState = initialState;
   const store = createStore(reducers, preloadedState);
   const finalState = store.getState();
   const context = {};

@@ -1,9 +1,19 @@
+import { TOGGLE_SUBHEADER } from 'Types';
+
 const initialState = {
-  articles: []
+  isSubheaderShown: false,
 };
 
 function rootReducer(state = initialState, action) {
-  return state;
+  const newState = { ...state };
+  switch(action.type) {
+    case TOGGLE_SUBHEADER:
+      newState.isSubheaderShown = !newState.isSubheaderShown;
+      return newState;
+    default:
+      return state;
+  }
 };
 
+export { initialState };
 export default rootReducer;

@@ -1,28 +1,27 @@
 import React, { PureComponent } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import { connect } from 'react-redux';
 
 import styles from './SubHeader.css';
+import { toggleSubheader } from 'Actions';
+
+const mapStateToProps = state => ({
+  isSubheaderShown: state.isSubheaderShown
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleSubheader: () => dispatch(toggleSubheader()),
+})
 
 class SubHeader extends PureComponent {
-
-  state = {
-    isShown: false
-  }
-
-  handleToggle = () => {
-    this.setState(prevState => ({
-      isShown: !prevState.isShown
-    }));
-  }
-
   render() {
-    const { isShown } = this.state;
+    const { isSubheaderShown, toggleSubheader } = this.props;
 
     return (
       <div
         className={ styles["sub-header-component"] }
-        style={{ top: isShown ? '100%' : 0 }}
-        onClick={ this.handleToggle }>
+        style={{ top: isSubheaderShown ? '100%' : 0 }}
+        onClick={ toggleSubheader }>
         <div className={ styles["sub-header-content"] }>
           You are awesome :)
         </div>
@@ -31,4 +30,4 @@ class SubHeader extends PureComponent {
   }
 }
 
-export default withStyles(styles)(SubHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SubHeader));
