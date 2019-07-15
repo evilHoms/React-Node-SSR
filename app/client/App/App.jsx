@@ -22,9 +22,6 @@ class App extends Component {
       <div className={ styles.app }>
         <Header />
         <Main />
-        {/* <button className={ styles.btn } onClick={ this.handleColorChange }>change color</button>
-        <div className={ styles.text } style={{ backgroundColor: this.state.color }}>HELLO WORLD</div>
-        <img src="images/test-img.png" /> */}
         <Footer />
       </div>
     );

@@ -1,11 +1,24 @@
 .main-component {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 60px;
   background-color: #fff;
 }
 
 .title {
-  align-self: center;
+  margin-bottom: 30px;
+}
+
+.sub-title {
+  margin-bottom: 20px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 30px;
 }

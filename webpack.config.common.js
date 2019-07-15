@@ -78,6 +78,7 @@ const clientConfig = {
     alias: {
       Components: path.resolve(__dirname, 'app', 'client', 'App', 'components'),
       Client: path.resolve(__dirname, 'app', 'client'),
+      Types: path.resolve(__dirname, 'app', 'client', 'data', 'types'),
       Actions: path.resolve(__dirname, 'app', 'client', 'data', 'actions'),
       Reducers: path.resolve(__dirname, 'app', 'client', 'data', 'reducers'),
     }

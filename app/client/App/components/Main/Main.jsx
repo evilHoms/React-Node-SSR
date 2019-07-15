@@ -11,16 +11,23 @@ class Main extends PureComponent {
         <h1 className={ styles["title"] }>
           SSR React Redux  boilerplate
         </h1>
-        <h2>
-          Core:
-        </h2>
-        <ul>
-          <li>React</li>
-          <li>Redux</li>
-          <li>PostCSS/Sass</li>
-          <li>NodeJs/Express.js</li>
-        </ul>
-        <h2>
+        <section className={ styles["section"] }>
+          <h2 className={ styles["sub-title"] }>
+            Core:
+          </h2>
+          <div>_______________________</div>
+          <div>/-----------------------------------\</div>
+          <div>|-----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;React&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------|</div>
+          <div>|-------------------------------------|</div>
+          <div>|-----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------|</div>
+          <div>|-------------------------------------|</div>
+          <div>|------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PostCSS/Sass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----|</div>
+          <div>|-------------------------------------|</div>
+          <div>|-----&nbsp;&nbsp;&nbsp;NodeJs/Express.js&nbsp;&nbsp;&nbsp;-----|</div>
+          <div>|------------------------------------|</div>
+          <div>\_______________________/</div>
+        </section>
+        <h2 className={ styles["sub-title"] }>
           Instructions:
         </h2>
         <h3>

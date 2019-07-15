@@ -7,9 +7,9 @@ module.exports = api => {
   ];
 
   const plugins = [
-    "@babel/plugin-transform-arrow-functions",
     ["@babel/plugin-proposal-decorators", { decoratorsBeforeExport: false }],
     "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-arrow-functions",
   ];
 
   return {
