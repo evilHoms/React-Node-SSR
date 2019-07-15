@@ -1,0 +1,20 @@
+/* Common application styles */
+
+$column: 300px;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 60px auto 60px;
+  background-color: gray;
+  min-height: 100vh;
+
+  .btn {
+    padding: 5px 10px;
+    width: $column;
+  }
+}

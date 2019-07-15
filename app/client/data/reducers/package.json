@@ -1,0 +1,5 @@
+{
+  "main": "./rootReducer.js",
+  "name": "rootReducer",
+  "private": true
+}
