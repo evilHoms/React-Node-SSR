@@ -19,7 +19,7 @@ class Footer extends PureComponent {
           backgroundColor: isSubheaderShown ? 'green' : '#f0f0f0',
           color: isSubheaderShown ? 'white' : 'black'
         }}>
-        Some important information
+        <a href="https://github.com/evilHoms/React-Node-SSR">Github link</a>
       </div>
     );
   }
