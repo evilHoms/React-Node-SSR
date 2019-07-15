@@ -43,7 +43,7 @@ class Main extends PureComponent {
           yarn build / npm run build
         </p>
         <p>
-          node production/server
+          node ./production/server
         </p>
       </div>
     );

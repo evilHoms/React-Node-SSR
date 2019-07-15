@@ -71,8 +71,8 @@ const productionConfig = {
           mangle: {
             keep_fnames: true,
           },
+          warnings: false,
           compress: {
-            warnings: false,
             conditionals: true,
             unused: true,
             comparisons: true,

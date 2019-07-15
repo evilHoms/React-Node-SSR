@@ -69,8 +69,8 @@ const productionConfig = {
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
+          warnings: false,
           compress: {
-            warnings: false,
             conditionals: true,
             unused: true,
             comparisons: true,
