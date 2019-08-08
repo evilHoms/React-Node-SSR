@@ -4,5 +4,7 @@
 
 Релиз
 
+- Добавил mongo, реализовать sharing the connection и добавить mongoose
+
 -- В новой ветке DataBase(mongo)
 -- В новой ветке API(graphQl) и базовый логин(passport)
