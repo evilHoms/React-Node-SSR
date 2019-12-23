@@ -1,4 +1,6 @@
 import { createServer } from 'http';
+import open from 'open';
+
 import app from './server';
 import logger from './logger';
 import connectMongo from './mongo';
@@ -14,6 +16,10 @@ server.listen(port, () => {
   });
   
   connectMongo();
+
+  if (process.env.NODE_ENV !== 'production') {
+    open(`http://localhost:${port}`);
+  }
 });
 
 if (module.hot) {
