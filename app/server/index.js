@@ -1,3 +1,7 @@
+// dotenv could be removed if used other way to define env vars
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { createServer } from 'http';
 import open from 'open';
 

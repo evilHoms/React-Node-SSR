@@ -26,11 +26,9 @@ const developmentConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      "process.env": {
-        ...process.env,
-        "BUILD_TARGET": JSON.stringify('server'),
-        "NODE_ENV": JSON.stringify('development'),
-      }
+      ...process.env,
+      BUILD_TARGET: 'server',
+      NODE_ENV: 'development'
     }),
     new CopyWebpackPlugin([
       { from: 'app/public/images', to: 'public/images' }
@@ -55,11 +53,9 @@ const productionConfig = {
     new webpack.HashedModuleIdsPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      "process.env": {
-        ...process.env,
-        "BUILD_TARGET": JSON.stringify('server'),
-        "NODE_ENV": JSON.stringify('production'),
-      }
+      ...process.env,
+      BUILD_TARGET: 'server',
+      NODE_ENV: 'production'
     }),
     new CopyWebpackPlugin([
       { from: 'app/public/images', to: 'public/images' },

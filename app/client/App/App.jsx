@@ -5,7 +5,6 @@ import styles from './App.css';
 import Main from 'Components/Main';
 import Header from 'Components/Header';
 import Footer from 'Components/Footer';
-import SubHeader from 'Components/SubHeader';
 
 class App extends Component {
 

@@ -19,7 +19,7 @@
     "react-dom": "^16.6.0",
     "react-hot-loader": "^4.5.3",
     "react-redux": "^7.0.3",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.1.2",
     "redux": "^4.0.1",
     "serve-favicon": "^2.5.0",
     "start-server-webpack-plugin": "^2.2.5",
