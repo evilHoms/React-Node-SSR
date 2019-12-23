@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { createServer } from 'http';
-import open from 'open';
 
 import app from './server';
 import logger from './logger';
@@ -20,10 +19,6 @@ server.listen(port, () => {
   });
   
   connectMongo();
-
-  if (process.env.NODE_ENV !== 'production') {
-    open(`http://localhost:${port}`);
-  }
 });
 
 if (module.hot) {
