@@ -80,7 +80,7 @@ const clientConfig = {
       Client: path.resolve(__dirname, 'app', 'client'),
       Types: path.resolve(__dirname, 'app', 'client', 'data', 'types'),
       Actions: path.resolve(__dirname, 'app', 'client', 'data', 'actions'),
-      Reducers: path.resolve(__dirname, 'app', 'client', 'data', 'reducers'),
+      Reducers: path.resolve(__dirname, 'app', 'client', 'data', 'reducers')
     }
   }
 }
@@ -171,6 +171,10 @@ const serverConfig = {
     alias: {
       ...clientConfig.resolve.alias,
       Server: path.resolve(__dirname, 'app', 'server'),
+      Logger: path.resolve(__dirname, 'app', 'server', 'logger'),
+      Mongo: path.resolve(__dirname, 'app', 'server', 'mongo'),
+      Api: path.resolve(__dirname, 'app', 'server', 'api'),
+      Services: path.resolve(__dirname, 'app', 'server', 'services')
     }
   }
 }

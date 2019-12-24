@@ -4,19 +4,16 @@ dotenv.config();
 
 import { createServer } from 'http';
 
+import { log } from 'Logger';
+import connectMongo from 'Mongo';
 import app from './server';
-import logger from './logger';
-import connectMongo from './mongo';
 
 const server = createServer(app);
 let currentApp = app;
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => {
-  logger.log({
-    level: 'info',
-    message: `Server is running on ${port} port`
-  });
+  log(`Server is running on ${port} port`);
   
   connectMongo();
 });
