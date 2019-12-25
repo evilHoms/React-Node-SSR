@@ -12,7 +12,12 @@ import reducers, { initialState } from 'Reducers';
 
 const router = (req, res, next) => {
   // Render react template if path dont mathch to any of api routes
-  const match = apiRoutes.reduce((acc, route) => matchPath(req.url, { path: route.path, exact: true }) || acc, null);
+  const match = apiRoutes.reduce((acc, route) => {
+    return route.acceptableApiRoutes.reduce((routesAcc, path) => (
+      matchPath(req.url, { path, exact: true }) || routesAcc
+    ), false) || acc;
+  }, false);
+    
   if (match) {
     // If there are no api, then leave only *else* block
     next();

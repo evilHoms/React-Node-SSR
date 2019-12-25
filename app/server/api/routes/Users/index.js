@@ -10,10 +10,25 @@ router.get('/', (req, res) => {
     log('Request to /users' + req.url);
     res.status(200).send(result);
   }).catch(err => {
-    logError(err);
-    res.status(500).send(err);
+    logError(err.reason);
+    res.status(500).send(err.message);
   });
   
+});
+
+router.get('/:id', (req, res) => {
+  usersController.getUserById(req.params.id).then(result => {
+    log('Request to /users' + req.url);
+    res.status(200).send(result);
+  }).catch(err => {
+    logError(err.reason);
+    res.status(500).send(err.message);
+  });
+});
+
+router.post('/', (req, res) => {
+  console.log('Post');
+  res.status(200).send('success');
 });
 
 export default router;
