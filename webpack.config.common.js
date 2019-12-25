@@ -174,7 +174,7 @@ const serverConfig = {
       Logger: path.resolve(__dirname, 'app', 'server', 'logger'),
       Mongo: path.resolve(__dirname, 'app', 'server', 'mongo'),
       Api: path.resolve(__dirname, 'app', 'server', 'api'),
-      Services: path.resolve(__dirname, 'app', 'server', 'services')
+      Controllers: path.resolve(__dirname, 'app', 'server', 'controllers')
     }
   }
 }
