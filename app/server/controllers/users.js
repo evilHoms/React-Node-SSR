@@ -4,16 +4,19 @@ export default class Users {
 
   getUsers(query = {}, options = {}) {
     return new Promise((resolve, reject) => {
-      User.find({}).skip(options.skip || 0).limit(options.limit || 10).exec((err, res) => {
-        if (err) reject(err);
-        resolve(res);
-      });
+      User.find(query)
+        .skip(Number(options.skip) || 0)
+        .limit(Number(options.limit) || 10)
+        .exec((err, res) => {
+          if (err) reject(err);
+          resolve(res);
+        });
     });
   }
 
   getUserById(id) {
     return new Promise((resolve, reject) => {
-      if (!id) reject(new Error('No id provided'))
+      if (!id) reject(new Error('No user id provided'))
       
       User.findOne({ _id: id }).exec((err, res) => {
         if (err) reject(err);
@@ -22,21 +25,40 @@ export default class Users {
     });
   }
 
-  addUser() {
+  addUser(user) {
     return new Promise((resolve, reject) => {
-      console.log('Post');
+      if (!user) reject(new Error('No user provided'));
+      
+      User.create(user, (err, res) => {
+        if (err) reject(err);
+        resolve(res);
+      });
     });
   }
 
-  updateUser() {
+  updateUser(id, user) {
     return new Promise((resolve, reject) => {
-      console.log('Put');
+      if (!id) reject(new Error('No user id provided'));
+      if (!user) reject(new Error('No user provided'));
+      
+      User.update(
+        { _id: id },
+        { $set: { name: user.name } },
+        (err, res) => {
+          if (err) reject(err);
+          resolve(res);
+        });
     });
   }
 
-  deleteUser() {
+  deleteUser(id) {
     return new Promise((resolve, reject) => {
-      console.log('Delete');
+      if (!id) reject(new Error('No user id provided'));
+      
+      User.deleteOne({ _id: id }, (err, res) => {
+        if (err) reject(err);
+        resolve(res);
+      });
     });
   }
 }

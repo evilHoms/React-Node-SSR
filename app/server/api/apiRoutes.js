@@ -5,6 +5,7 @@ const apiRoutes = [{
   path: '/users',
   acceptableApiRoutes: [
     '/users',
+    '/users?*',
     '/users/*'
   ],
   router: Users
